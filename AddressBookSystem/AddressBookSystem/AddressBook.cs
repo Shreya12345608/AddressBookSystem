@@ -8,16 +8,19 @@ namespace AddressBookSystem
 {
     class AddressBook
     {
+        // adding items mechanism into generic type
         private List<Contact> contactList;
         /// <summary>
         /// Class For AddressBook
         /// </summary>
         public AddressBook()
         {
+            //instantiate generic with contact string
             contactList = new List<Contact>();
         }
         /// <summary>
         /// Constructor class for addressBook
+        ///  // field
         /// </summary>
         /// <param name="fistName"></param>
         /// <param name="lastName"></param>

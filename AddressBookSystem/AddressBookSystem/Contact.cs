@@ -11,6 +11,11 @@ namespace AddressBookSystem
     /// </summary>
     class Contact
     {
+
+        /// <summary>
+        /// property of FirstName LastName etc
+        ///  get and set method
+        /// </summary>
         public string fistName { get; set; }
         public string lastName { get; set; }
         public string address { get; set; }
