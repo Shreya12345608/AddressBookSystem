@@ -116,6 +116,8 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter 7 to edit PhoneNumber");
                 Console.WriteLine("Enter 8 to edit Email Id");
                 Console.WriteLine("Enter 9 if Editing is done");
+                Console.WriteLine("Enter 10 if Delete is done");
+
                 //read value
                 int choice = Convert.ToInt32(Console.ReadLine());
                 //switchCase
@@ -174,6 +176,7 @@ namespace AddressBookSystem
                         Console.WriteLine("Editing done.New Contact :-");
                         this.printSpecificContact(contactToBeEdited);
                         return;
+            
                 }
             }
         }
@@ -189,5 +192,23 @@ namespace AddressBookSystem
             Console.WriteLine("PhoneNumber: " + contact.phoneNumber);
             Console.WriteLine("Email id: " + contact.email);
         }
+        public void delete(string firstName, string lastName)
+        {
+            Contact contactToBeDeleted = null;
+            foreach (Contact contact in this.contactList)
+            {
+                if (contact.fistName == firstName && contact.lastName == lastName)
+                {
+                    contactToBeDeleted = contact;
+                    this.contactList.Remove(contactToBeDeleted);
+                    break;
+                }
+            }
+            if (contactToBeDeleted == null)
+                Console.WriteLine("No such contact exists");
+            else
+                Console.WriteLine("Deletion Done.");
+        }
+
     }
 }
