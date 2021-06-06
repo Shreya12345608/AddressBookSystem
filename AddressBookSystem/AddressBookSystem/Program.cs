@@ -14,10 +14,20 @@ namespace AddressBookSystem
             //creating object of addressbook
             AddressBook addressBook = new AddressBook();
             //getting Op in Constructor with paratmers
-            takeInputAndAddToContacts(addressBook);
-            takeInputAndAddToContacts(addressBook);
+            // takeInputAndAddToContacts(addressBook);
+            //takeInputAndAddToContacts(addressBook);
+            //to add multiple contact 
+            Console.WriteLine("Enter how many contacts you want to add");
+            int number = Convert.ToInt32(Console.ReadLine());
+            //in for loop int number_i = 1  number_i <= number +1
+            for (int number_i = 1; number_i <= number; number_i++)
+            {
+                takeInputAndAddToContacts(addressBook);
+            }
             // called Print method 
             addressBook.print();
+            
+
             Console.WriteLine("What you want to perform ? Press 1 for Edit the details ,\n Press 2 for Delete  details : ");
             int Selectchoice = Convert.ToInt32(Console.ReadLine());
             switch (Selectchoice)
