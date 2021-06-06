@@ -18,6 +18,11 @@ namespace AddressBookSystem
             takeInputAndAddToContacts(addressBook);
             // called Print method 
             addressBook.print();
+            Console.WriteLine("Enter FirstName of Contact to be edited");
+            string firstNameOfContactToBeEdited = Console.ReadLine();
+            Console.WriteLine("Enter LastName of Contact to be edited");
+            string lastNameOfContactToBeEdited = Console.ReadLine();
+            addressBook.edit(firstNameOfContactToBeEdited, lastNameOfContactToBeEdited);
             Console.ReadLine();
         }
         // take Input And Add To Contacts
