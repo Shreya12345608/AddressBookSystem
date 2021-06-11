@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,7 +49,7 @@ namespace AddressBookSystem
         //method print
         public void print()
         {
-            //using foreach loop for calling the variable 
+            //using foreach loop for calling the variable //ref of contact class
             foreach (Contact contact in contactList)
             {
                 //Prinitng the Op
@@ -82,18 +82,19 @@ namespace AddressBookSystem
             foreach (Contact contact in this.contactList)
             {
                 if (contact.fistName == firstName && contact.lastName == lastName)
-                    contactToBeEdited = contact;
+                    //otherwise get the value
+                    this.editThisContact(contact);
+
             }
             // if First Name And last name is not match with entered data
             //contactToBeEdited == null
-            if (contactToBeEdited == null)
-            {
-                //Error :No such contact exists
-                Console.WriteLine("No such contact exists");
-                return;
-            }
-            //otherwise get the value
-            this.editThisContact(contactToBeEdited);
+            //if (contactToBeEdited == null)
+            //{
+            //    //Error :No such contact exists
+            //    Console.WriteLine("No such contact exists");
+            //    return;
+            //}
+
         }
         /* <summary>
             fetch details and edit This Contact
@@ -103,8 +104,9 @@ namespace AddressBookSystem
         */
         public void editThisContact(Contact contactToBeEdited)
         {
+            bool status = true;
             //if true
-            while (true)
+            while (status == true)
             {
                 //Enter what you want to edit
                 Console.WriteLine("Enter 1 to edit FirstName");
@@ -175,10 +177,14 @@ namespace AddressBookSystem
                     case 9:
                         Console.WriteLine("Editing done.New Contact :-");
                         this.printSpecificContact(contactToBeEdited);
-                        return;
-            
+                        break;
+                       
+                    //default
+                    default:
+                        status = false;
+                        break;
                 }
-            }
+            }//while end
         }
         //Print Data After Edit
         public void printSpecificContact(Contact contact)
