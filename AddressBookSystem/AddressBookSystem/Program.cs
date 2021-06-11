@@ -38,6 +38,8 @@ namespace AddressBookSystem
                     string firstNameOfContactToBeEdited = Console.ReadLine();
                     Console.WriteLine("Enter LastName of Contact to be edited");
                     string lastNameOfContactToBeEdited = Console.ReadLine();
+                   addressBook.edit(firstNameOfContactToBeEdited, lastNameOfContactToBeEdited);
+                    
                     break;
                 case 2:
                     Console.WriteLine("Enter FirstName of Contact to be deleted");
