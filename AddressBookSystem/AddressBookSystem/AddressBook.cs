@@ -32,24 +32,55 @@ namespace AddressBookSystem
         /// <param name="email"></param>
         public void addContacts(string fistName, string lastName, string address, string city, string state, int zip, long phoneNumber, string email)
         {
-            //Create object of Contact class
-            Contact contact = new Contact();
-            //calling Varivale using object
-            contact.fistName = fistName;
-            contact.lastName = lastName;
-            contact.address = address;
-            contact.city = city;
-            contact.state = state;
-            contact.zip = zip;
-            contact.phoneNumber = phoneNumber;
-            contact.email = email;
-            //adding contact details in contact list 
-            contactList.Add(contact);
+            //UC7
+            //bool for duplicate value
+            ////using equals method and with parameters firstname and last name
+            bool duplicate = equals(fistName, lastName);
+            //condtition for check where the entered data is match or not
+            // if duplicate is ! same it will enter the record
+            if (!duplicate)
+            {
+                //Create object of Contact class
+                Contact contact = new Contact();
+                //calling Varivale using object
+                contact.fistName = fistName;
+                contact.lastName = lastName;
+                contact.address = address;
+                contact.city = city;
+                contact.state = state;
+                contact.zip = zip;
+                contact.phoneNumber = phoneNumber;
+                contact.email = email;
+                //adding contact details in contact list 
+                contactList.Add(contact);
+             }
+            // ELSE  it is duplicate contact   
+            else
+                Console.WriteLine("Cannot add duplicate Contact");
+        }
+
+        /// <summary>
+        ///This method is used to return a value indicating whether this instance
+        ///is equal to a specified Boolean object.
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <param name="lName"></param>
+        /// <returns></returns>
+        private bool equals(string fName, string lName)
+        {
+            // lambda expression is a shorter way of representing anonymous method using some special syntax
+            //input => expression;
+            // Using Lambda exression to
+            //Any: Checks if any elements in a collection satisifies a specified condition.
+            if (this.contactList.Any(e => e.fistName == fName && e.lastName == lName))
+                return true;
+            else
+                return false;
         }
         //method print
         public void print()
         {
-            //using foreach loop for calling the variable 
+            //using foreach loop for calling the variable //ref of contact class
             foreach (Contact contact in contactList)
             {
                 //Prinitng the Op
@@ -82,18 +113,19 @@ namespace AddressBookSystem
             foreach (Contact contact in this.contactList)
             {
                 if (contact.fistName == firstName && contact.lastName == lastName)
-                    contactToBeEdited = contact;
+                    //otherwise get the value
+                    this.editThisContact(contact);
+
             }
             // if First Name And last name is not match with entered data
             //contactToBeEdited == null
-            if (contactToBeEdited == null)
-            {
-                //Error :No such contact exists
-                Console.WriteLine("No such contact exists");
-                return;
-            }
-            //otherwise get the value
-            this.editThisContact(contactToBeEdited);
+            //if (contactToBeEdited == null)
+            //{
+            //    //Error :No such contact exists
+            //    Console.WriteLine("No such contact exists");
+            //    return;
+            //}
+
         }
         /* <summary>
             fetch details and edit This Contact
@@ -103,8 +135,9 @@ namespace AddressBookSystem
         */
         public void editThisContact(Contact contactToBeEdited)
         {
+            bool status = true;
             //if true
-            while (true)
+            while (status == true)
             {
                 //Enter what you want to edit
                 Console.WriteLine("Enter 1 to edit FirstName");
@@ -175,10 +208,14 @@ namespace AddressBookSystem
                     case 9:
                         Console.WriteLine("Editing done.New Contact :-");
                         this.printSpecificContact(contactToBeEdited);
-                        return;
-            
+                        break;
+                       
+                    //default
+                    default:
+                        status = false;
+                        break;
                 }
-            }
+            }//while end
         }
         //Print Data After Edit
         public void printSpecificContact(Contact contact)
