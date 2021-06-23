@@ -10,6 +10,8 @@ namespace AddressBookSystem
     {
         // adding items mechanism into generic type
         private List<Contact> contactList;
+        private object personal_Details;
+
         /// <summary>
         /// Class For AddressBook
         /// </summary>
@@ -247,6 +249,9 @@ namespace AddressBookSystem
                 Console.WriteLine("Deletion Done.");
         }
 
+        /// <summary>
+        /// UC8
+        /// </summary>
         public void Search()
         {
             Console.WriteLine("Enter your Choice for Searching a Person in");
@@ -275,6 +280,34 @@ namespace AddressBookSystem
                     }
                     break;
 
+            }
+        }
+        public void ViewContact()
+        {
+            Console.WriteLine("Enter your Choice for Viewing a Person by:");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            //Using switch case is used to take a input
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City");
+                    String city = Console.ReadLine();
+                    //(input-parameters) => { <sequence-of-statements> }
+                    // which specifies a parameter that's named  e and returns the value of city,s assigned to a variable
+                    foreach (Contact contact in this.contactList.FindAll(e => e.city == city))
+                        Console.WriteLine("View Person Name" + contact.fistName + contact.lastName);
+                     
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State");
+                    String state = Console.ReadLine();
+                    //(input-parameters) => { <sequence-of-statements> }
+                    // which specifies a parameter that's named  e and returns the value of state, assigned to a variable
+                    foreach (Contact contact in this.contactList.FindAll(e => e.state == state))
+                        Console.WriteLine("View Person Name" + contact.fistName + contact.lastName);
+                    break;
             }
         }
     }
