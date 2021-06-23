@@ -53,7 +53,7 @@ namespace AddressBookSystem
                 contact.email = email;
                 //adding contact details in contact list 
                 contactList.Add(contact);
-             }
+            }
             // ELSE  it is duplicate contact   
             else
                 Console.WriteLine("Cannot add duplicate Contact");
@@ -104,7 +104,7 @@ namespace AddressBookSystem
         /// <param name="lastName"></param>
         public void edit(string firstName, string lastName)
         {
-            // created object ContacttobeEdited fir conatct and at starting it will be null
+            // created object ContacttobeEdited for conatct and at starting it will be null
             Contact contactToBeEdited = null;
 
             // foreach loop begin
@@ -162,7 +162,7 @@ namespace AddressBookSystem
                         string fName = Console.ReadLine();
                         contactToBeEdited.fistName = fName;
                         break;
-                     //For edit Lastlame
+                    //For edit Lastlame
                     case 2:
                         Console.WriteLine("Enter new LastName");
                         string lName = Console.ReadLine();
@@ -204,12 +204,12 @@ namespace AddressBookSystem
                         string email = Console.ReadLine();
                         contactToBeEdited.email = email;
                         break;
-                        //if Done
+                    //if Done
                     case 9:
                         Console.WriteLine("Editing done.New Contact :-");
                         this.printSpecificContact(contactToBeEdited);
                         break;
-                       
+
                     //default
                     default:
                         status = false;
@@ -247,5 +247,35 @@ namespace AddressBookSystem
                 Console.WriteLine("Deletion Done.");
         }
 
+        public void Search()
+        {
+            Console.WriteLine("Enter your Choice for Searching a Person in");
+            Console.WriteLine("1. City 2. State");
+            int choice1 = Convert.ToInt32(Console.ReadLine());
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City Name:");
+                    String NameToSearchInCity = Console.ReadLine();
+                    // Using Lambda exression to
+                    // find all the matching data  from contact list
+                    foreach (Contact personal_Details in this.contactList.FindAll(e => e.city == NameToSearchInCity))
+                    {
+                        Console.WriteLine("City of " + personal_Details.fistName + personal_Details.lastName + " is : " + personal_Details.city);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State Name:");
+                    String nameToSearchInState = Console.ReadLine();
+                    // Using Lambda exression to
+                    // find all the matching data  from contact list
+                    foreach (Contact personal_Details in this.contactList.FindAll(e => e.state == nameToSearchInState))
+                    {
+                        Console.WriteLine("City of " + personal_Details.fistName + personal_Details.lastName +  " is : " + personal_Details.state);
+                    }
+                    break;
+
+            }
+        }
     }
 }
