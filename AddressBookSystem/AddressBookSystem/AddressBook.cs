@@ -256,8 +256,8 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Enter your Choice for Searching a Person in");
             Console.WriteLine("1. City 2. State");
-            int choice1 = Convert.ToInt32(Console.ReadLine());
-            switch (choice1)
+            int choiceOne = Convert.ToInt32(Console.ReadLine());
+            switch (choiceOne)
             {
                 case 1:
                     Console.WriteLine("Enter your City Name:");
@@ -276,7 +276,7 @@ namespace AddressBookSystem
                     // find all the matching data  from contact list
                     foreach (Contact personal_Details in this.contactList.FindAll(e => e.state == nameToSearchInState))
                     {
-                        Console.WriteLine("City of " + personal_Details.fistName + personal_Details.lastName +  " is : " + personal_Details.state);
+                        Console.WriteLine("City of " + personal_Details.fistName + personal_Details.lastName + " is : " + personal_Details.state);
                     }
                     break;
 
@@ -287,9 +287,9 @@ namespace AddressBookSystem
             Console.WriteLine("Enter your Choice for Viewing a Person by:");
             Console.WriteLine("1. City 2. State");
             String choice = Console.ReadLine();
-            int choice1 = Convert.ToInt32(choice);
+            int choiceOne = Convert.ToInt32(choice);
             //Using switch case is used to take a input
-            switch (choice1)
+            switch (choiceOne)
             {
                 case 1:
                     Console.WriteLine("Enter your City");
@@ -298,7 +298,7 @@ namespace AddressBookSystem
                     // which specifies a parameter that's named  e and returns the value of city,s assigned to a variable
                     foreach (Contact contact in this.contactList.FindAll(e => e.city == city))
                         Console.WriteLine("View Person Name" + contact.fistName + contact.lastName);
-                     
+
                     break;
                 case 2:
                     Console.WriteLine("Enter your State");
@@ -307,6 +307,40 @@ namespace AddressBookSystem
                     // which specifies a parameter that's named  e and returns the value of state, assigned to a variable
                     foreach (Contact contact in this.contactList.FindAll(e => e.state == state))
                         Console.WriteLine("View Person Name" + contact.fistName + contact.lastName);
+                    break;
+            }
+        }
+
+        public void CountContacts()
+        {
+            int count = 0;
+            Console.WriteLine("Enter your Choice for Count Person by:");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choiceOne = Convert.ToInt32(choice);
+            switch (choiceOne)
+            {
+                case 1:
+                    //Input from user
+                    Console.WriteLine("Enter your City");
+                    //Reading String
+                    String city = Console.ReadLine();
+                    // loop for find all the list present of city
+                    foreach (Contact personal_Details in this.contactList.FindAll(c => c.city == city))
+                    {
+                        // count return the number of element in a sepuence
+                        count = this.contactList.Count();
+                    }
+                    Console.WriteLine(count);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State");
+                    String state = Console.ReadLine();
+                    foreach (Contact personal_Details in this.contactList.FindAll(c => c.state == state))
+                    {
+                        count = this.contactList.Count();
+                    }
+                    Console.WriteLine(count);
                     break;
             }
         }
