@@ -344,5 +344,36 @@ namespace AddressBookSystem
                     break;
             }
         }
+        //public void SortByName()
+        //{
+        //    contactList.Sort((contact1, contact2) => contact1.fistName.CompareTo(contact2.fistName));
+        //    foreach (Contact c in contactList)
+        //    {
+        //        Console.WriteLine(c.ToString());
+        //    }
+        //}
+
+        /// <summary>
+        /// Views the name of the entries sorted by person name.
+        /// </summary>
+        public void ViewEntriesSortedByPersonName()
+        {
+            // Creating a List of cintact to sort by person Name
+            //sort the element of a sequence in asc order according to key
+           // to list containelement from to th input sequence
+            List<Contact> sortedByPersonName = this.contactList.OrderBy(obj => (obj.fistName + obj.lastName)).ToList();
+            // Displaying the elements of List
+
+            foreach (Contact contact in sortedByPersonName)
+            {
+                // displaying the number
+                // of elements of List<T>
+                Console.WriteLine("-----------");
+                Console.WriteLine("FirstName: " + contact.fistName + "\tLastName: " + contact.lastName);
+                Console.WriteLine("Address: " + contact.address + "\tCity: " + contact.city + "\tState: " + contact.state);
+                Console.WriteLine("Zip: " + contact.zip + "\tPhoneNumber: " + contact.phoneNumber + "\tEmail: " + contact.email);
+                Console.WriteLine("-----------");
+            }
+        }
     }
 }

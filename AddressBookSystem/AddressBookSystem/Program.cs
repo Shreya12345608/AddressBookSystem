@@ -28,7 +28,7 @@ namespace AddressBookSystem
             addressBook.print();
             
 
-            Console.WriteLine("What you want to perform ? Press 1 for Edit the details ,\n Press 2 for Delete  details ,\n Press 3 for Search City Or State  details ,\n Press 4 for View City Or State  details ,\n Press 5 for Count City Or State  details : ");
+            Console.WriteLine("What you want to perform ? Press 1 for Edit the details ,\n Press 2 for Delete  details ,\n Press 3 for Search City Or State  details ,\n Press 4 for View City Or State  details ,\n Press 5 for Count City Or State  details : ,\n Press 6 for Sort By Name : ");
             int Selectchoice = Convert.ToInt32(Console.ReadLine());
             switch (Selectchoice)
             {
@@ -56,6 +56,9 @@ namespace AddressBookSystem
                     break;
                 case 5:
                     addressBook.CountContacts();
+                    break;
+                case 6:
+                    addressBook.ViewEntriesSortedByPersonName();
                     break;
                 default:
                     Console.WriteLine("Please enter the valid number : ");
