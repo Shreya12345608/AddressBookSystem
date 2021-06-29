@@ -8,6 +8,8 @@ namespace AddressBookSystem
 {
     class Program
     {
+        private static List<Contact> contactList;
+
         static void Main(string[] args)
         {
             //Console.WriteLine("!------Welcome to Address Book system------!");
@@ -28,7 +30,8 @@ namespace AddressBookSystem
             addressBook.print();
             
 
-            Console.WriteLine("What you want to perform ? Press 1 for Edit the details ,\n Press 2 for Delete  details ,\n Press 3 for Search City Or State  details ,\n Press 4 for View City Or State  details ,\n Press 5 for Count City Or State  details : ,\n Press 6 for Sort By Name : ");
+            Console.WriteLine("What you want to perform ? Press 1 for Edit the details ,\n Press 2 for Delete  details ,\n Press 3 for Search City Or State  details ,\n Press 4 for View City Or State  details ,\n Press 5 for Count City Or State  details :" +
+                " ,\n Press 6 for Sort By Name :,/\n Press 7 To Write A File ");
             int Selectchoice = Convert.ToInt32(Console.ReadLine());
             switch (Selectchoice)
             {
@@ -60,6 +63,13 @@ namespace AddressBookSystem
                 case 6:
                     addressBook.ViewEntriesSortedByPersonName();
                     break;
+                case 7:
+                    addressBook.WriteContactsIntoFile(contactList);
+                    break;
+
+
+
+
                 default:
                     Console.WriteLine("Please enter the valid number : ");
                     break; 

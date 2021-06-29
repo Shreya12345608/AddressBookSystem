@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace AddressBookSystem
         // adding items mechanism into generic type
         private List<Contact> contactList;
         private object personal_Details;
+        internal object addressBook;
 
         /// <summary>
         /// Class For AddressBook
@@ -360,7 +362,7 @@ namespace AddressBookSystem
         {
             // Creating a List of cintact to sort by person Name
             //sort the element of a sequence in asc order according to key
-           // to list containelement from to th input sequence
+            // to list containelement from to th input sequence
             List<Contact> sortedByPersonName = this.contactList.OrderBy(obj => (obj.fistName + obj.lastName)).ToList();
             // Displaying the elements of List
 
@@ -374,6 +376,36 @@ namespace AddressBookSystem
                 Console.WriteLine("Zip: " + contact.zip + "\tPhoneNumber: " + contact.phoneNumber + "\tEmail: " + contact.email);
                 Console.WriteLine("-----------");
             }
+        }
+        public void WriteContactsIntoFile(List<Contact> contacts)
+        {
+            String path = @"C:\Users\hp\Desktop\BriLabz\AddressBookSystem\AddressBookSystem\AddressBookSystem\TextFile1.txt";
+
+            StreamWriter stream = new StreamWriter(path);
+            foreach (Contact contact in contactList)
+            {
+               // Console.WriteLine("Name: " + contact.fistName + "\t");
+               // Console.WriteLine("LastName: " + contact.lastName + "\t");
+               // Console.WriteLine("State: " + contact.state + "\t");
+                stream.Write("Name: " + contact.fistName + "\t");
+                stream.Write("LastName: " + contact.lastName + "\t");
+                stream.Write("State: " + contact.state + "\t");
+               
+                stream.WriteLine("\n");
+            }
+            stream.Close();
+        
+            ReadContactsFromFile(contacts);
+        }
+
+        public void ReadContactsFromFile(List<Contact> contacts)
+        {
+            String path = @"C:\Users\hp\Desktop\BriLabz\AddressBookSystem\AddressBookSystem\AddressBookSystem\TextFile1.txt";
+
+            StreamReader stream = new StreamReader(path);
+
+            Console.WriteLine(stream.ReadToEnd());
+            stream.Close();
         }
     }
 }
